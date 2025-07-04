@@ -1,17 +1,16 @@
-/* CSS-Variablen für einfache Farbanpassung */
 :root {
-    --dark-background: #1a1a1a; /* Dunkelster Punkt, unten */
-    --mid-dark-green: #003300;  /* Übergangsbereich, dunkles Grün */
-    --mid-light-green: #006600; /* Helleres Grün im oberen Bereich */
-    --bright-green-glow: #00FF00; /* Der hellste grüne Punkt, ganz oben */
+    --dark-background: #1a1a1a; 
+    --mid-dark-green: #003300;  
+    --mid-light-green: #006600; 
+    --bright-green-glow: #00FF00; 
     --text-color: #eee;
     --button-color: #4CAF50;
     --button-hover-color: #45a049;
-    --title-color-main: #6CFF6C; /* Für den Titel selbst */
-    --title-glow-color: rgba(108, 255, 108, 0.8); /* Für den Titel-Glow (mit Transparenz) */
+    --title-color-main: #6CFF6C; 
+    --title-glow-color: rgba(108, 255, 108, 0.8); 
 }
 
-/* --- Grundlegende Body- und Hintergrundgestaltung --- */
+
 body {
     margin: 0;
     padding: 0;
@@ -22,66 +21,59 @@ body {
     justify-content: center;
     align-items: center;
     color: var(--text-color);
-    overflow: hidden; /* Verhindert Scrollbalken durch Pseudo-Element */
+    overflow: hidden;
 
-    /* Basis-Gradient von dunkel (unten) nach hellgrün (oben) */
     background-image: linear-gradient(
         to top,
         var(--dark-background) 0%,
-        var(--dark-background) 40%, /* Bleibt länger dunkel */
+        var(--dark-background) 40%, 
         var(--mid-dark-green) 65%,
         var(--mid-light-green) 85%,
-        var(--bright-green-glow) 100% /* Helles Grün ganz oben */
+        var(--bright-green-glow) 100% 
     );
-    background-color: var(--dark-background); /* Fallback */
+    background-color: var(--dark-background); 
     background-repeat: no-repeat;
-    background-size: cover; /* Stellt sicher, dass der Gradient den ganzen Bereich abdeckt */
-    background-position: center bottom; /* Positioniert den dunklen Teil unten */
+    background-size: cover; 
+    background-position: center bottom; 
 }
 
-/* --- Pseudo-Element für den Rausch-/Körnungseffekt --- */
 body::before {
     content: '';
-    position: fixed; /* Bleibt beim Scrollen fest */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Klicks gehen durch dieses Overlay */
+    pointer-events: none; 
     
-    /* Ein winziges, sich wiederholendes Bild für den Noise-Effekt (Base64-kodiertes PNG) */
-    /* Dieses Bild ist 2x2 Pixel groß und enthält leicht graue, transparente Pixel */
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytgfIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaWJkdWN5c2YiPiA8eDp4bXBNTTptb2RpZmVkRGF0ZT4yMDI0LTA1LTA4VDA5OjI3OjU0KzAxOjAwPC94bXBNTTpjcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgMjUuNS4wPC94bXBNTTpkb2NpZGF0ZmlsdGVycz4gPHhkYjpEb2NBdHRyPjxzcGFuIG5hbWU9IkRhdGUiPjIwMjQtMDUtMDhUMDg6NTI6NTRaPC9zcGFuPjxzcGFuIG5hbWU9IkNPTVAiPjI8L3NwYW4+PHNwYW4gbmFtZT0iTElQIj4xPC9zcGFuPjxzcGFuIG5hbWU9IkxJTiI+MjU1PC9zcGFuPjxzcGFuIG5hbWU9IkxJRCI+NzM2MDwvcmVmcmFtZT5zPC94ZGI6UmVmcmFtZT48cmRmOkRFRj48cmRmOmF0dHJpYnV0ZSB4bWxuczpkaW1lbnNpb25zPSJodHRwOi8vbmhhbC50cmV3LnVzYy5lZHUvcmRmIj48ZGR0cmU3Ojs9JjM3NTQ0X0lEMTY4JnJkZjpsaT48c3BhbiBuYW1lPSJQcm9kdWN0IjogInNoYXJlIiB2YWx1ZT0iMSIgLz48L3JkZi8+PC9yZGY+PC94cGFja2V0PiA8eDp4bXBNTTptb2RpZmllZEluZm8+PHhkYjpJbmZvPjxzcGFuIG5hbWU9ImhkciI+NjQ4MDwvcmVmcmFtZT48L2RkMjM6RG9jQXR0cj48c3BhbiBuYW1lPSJMZWdhY3lQcm9kdWN0Ijoic2hhcmUiIHZhbHVlPSIxIiAvPjwvc3Bhbj48L2RkMjM6RG9jQXR0cj48c2R0Oi9cZGIvQ2FyZGEvdmlldy5yb2QvSW5mby9JdGVtIj48cmRmOkRhdGE+PHJlZjphdHRyaWJ1dGUgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRhdGE+PHJlZjphdHRyaWJ1dGUgeG1sbnM6c2Q9Imh0dHA6Ly9uc2FwaXUuZG9jdW1lbnRzLWRldmVsb3BlcnMuY29tL3hzYi8xOTc4L2N1c3RvbS9kYmNhcmQvaW5kZXgucmRmIj48c3BhbiBuYW1lPSJQcm9kdWN0IjogInNoYXJlIiB2YWx1ZT0iMSIgLz48L3NkOi8+PC9yZGY+PC94cGFja2V0Pjx4OnhtcFN0eWxlOmNvbXBhbnlPcHRSZXNvdXJjZT48cmRmOlJERj48cmRmOmF0dHJpYnV0ZSB4bWxuczpmaWxlPSJodHRwOi8vbnNhcGl1LmRvY3VtZW50cy1kZXZlbG9wZXJzL3hzYi8xOTc4L2N1c3RvbS9kcm1haW4vcmRmIj48c3R5bGU6c3R5bGUgdHlwZT0idGV4dC9jc3MiIC8+PHNwYW4gbmFtZT0iQ29uZmlndXJhdGlvbiI+PHNwYW4gbmFtZT0iTElQIEdlbmVyYWwiPjE5Ni4xNTUuNjguMTEyIC0gUm9nYW5pbyAoUGFyZW50ZXNpcyk8L3NwYW4+PHNwYW4gbmFtZT0iTElQIEdlbmVyYWwiPjE5Ni4xNTUuNjguMTEyIC0gUm9nYW5pbyAoUGFyZW50ZXNpcyk8L3NwYW4+PHNwYW4gbmameDpbY29uZmlndXJhdGlvbiB4bWxuczpmaWxlPSJodHRwOi8vbnNhcGl1LmRvY3VtZW50cy1kZXZlbG9wZXJzL3hzYi8xOTc4L2N1c3RvbS9kcm1haW4vcmRmIj48c3BhbiBuYW1lPSJMZWdhY3lQcm9kdWN0Ijoic2hhcmUiIHZhbHVlPSIxIiAvPjwvc3Bhbj48c3BhbiBuYW1lPSJMZWdhY3lQcm9kdWN0Ijoic2hhcmUiIHZhbHVlPSIxIiAvPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPjxzcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuIG5hbWU9IkxJUCBTb2x1dGlvbiI+MjAxNS0xMS0xMiAxMzozNzo1MCAtIFJvZ2FuaXogKFBhcmVudGVzaXMpPC9zcGFuPgogICAgIDwvcmRmOmxpPjwvcmRmOlJERj48L3hzcDo+PC94cGFja2V0Pjw/eHBhY2tldCBlbmQ9InciPz4x4B6bAAAAD0lEQVR42mJgYGDgBwADCAIA/g0iWAAAAABJRU5ErkJggg==");
     background-repeat: repeat;
-    opacity: 0.08; /* Stärke des Rauschens anpassen */
-    mix-blend-mode: screen; /* Macht das Rauschen heller und passt sich dem Hintergrund an */
+    opacity: 0.08;
+    mix-blend-mode: screen; 
 }
 
-/* --- Container für den Inhalt --- */
 .container {
     text-align: center;
     padding: 20px;
     max-width: 800px;
     margin: 0 auto;
-    position: relative; /* Für z-index, falls nötig */
-    z-index: 1; /* Stellt sicher, dass der Inhalt über dem Noise-Overlay liegt */
+    position: relative; 
+    z-index: 1; 
 }
 
-/* --- Titel --- */
 h1 {
-    font-size: 4.5em; /* Größerer Titel */
+    font-size: 4.5em; 
     margin-bottom: 20px;
     color: var(--title-color-main);
     text-shadow: 
-        0 0 10px var(--title-glow-color), /* Weicher Glow */
-        0 0 20px var(--title-glow-color), /* Stärkerer Glow */
-        0 0 30px var(--title-glow-color); /* Noch stärkerer Glow für den Effekt */
-    letter-spacing: 2px; /* Etwas mehr Abstand zwischen den Buchstaben */
+        0 0 10px var(--title-glow-color),
+        0 0 10px var(--title-glow-color),
+        0 0 20px var(--title-glow-color); 
+    letter-spacing: 2px; 
     font-weight: bold;
     text-transform: uppercase;
 }
 
-/* --- Allgemeine Texteinstellungen --- */
 p {
     font-size: 1.1em;
     line-height: 1.6;
@@ -97,36 +89,34 @@ p {
 }
 
 .explanation {
-    margin-top: 40px; /* Mehr Abstand zum Button */
+    margin-top: 40px; 
 }
 
-/* --- Download Button --- */
 .download-button {
     display: inline-block;
-    padding: 18px 35px; /* Etwas größerer Button */
+    padding: 18px 35px;
     margin: 30px 0;
     background-color: var(--button-color);
     color: white;
     text-decoration: none;
-    border-radius: 10px; /* Sanftere Ecken */
-    font-size: 1.6em; /* Größere Schrift */
+    border-radius: 10px;
+    font-size: 1.6em; 
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), /* Tieferer Schatten */
-                0 0 20px rgba(76, 255, 76, 0.5); /* Leichter grüner Glow um den Button */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 
+                0 0 20px rgba(76, 255, 76, 0.5); 
 }
 
 .download-button:hover {
     background-color: var(--button-hover-color);
-    transform: translateY(-3px); /* Stärkerer "Pop-Up" Effekt */
+    transform: translateY(-3px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6),
                 0 0 30px rgba(76, 255, 76, 0.8);
 }
 
-/* --- Responsivität für kleinere Bildschirme --- */
 @media (max-width: 768px) {
     h1 {
-        font-size: 3em; /* Titel auf kleineren Bildschirmen kleiner */
+        font-size: 3em;
     }
     .download-button {
         font-size: 1.3em;
@@ -137,7 +127,6 @@ p {
     }
 }
 
-/* Optional: Weitere Anpassungen für extrem kleine Bildschirme */
 @media (max-width: 480px) {
     h1 {
         font-size: 2.5em;
